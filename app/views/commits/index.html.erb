@@ -15,7 +15,7 @@
 <% @commits.each do |commit| %>
   <tr>
     <td><%= commit.sha %></td>
-    <td><%= commit.author.try :name %></td>
+    <td><%= commit.author.name %></td>
     <td><%= commit.repository.name%></td>
     <td><%= commit.comment %></td>
     <td><%= commit.commented_at %></td>

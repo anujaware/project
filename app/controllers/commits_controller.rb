@@ -1,5 +1,5 @@
 class CommitsController < ApplicationController
-  before_filter :authenticate_author!, :only => [ :edit, :destroy ]
+  before_filter :authenticate_author!, :only => [ :edit, :destroy, :create ]
   before_filter :is_owner , :only => [ :edit , :update ]
   # GET /commits
   # GET /commits.xml
