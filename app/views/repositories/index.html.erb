@@ -1,0 +1,29 @@
+<h1>Listing repositories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Repository type</th>
+    <th>Path</th>
+    <th>Log file</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @repositories.each do |repository| %>
+  <tr>
+    <td><%= repository.name %></td>
+    <td><%= repository.repository_type %></td>
+    <td><%= repository.path %></td>
+    <td><%= repository.log_file %></td>
+    <td><%= link_to 'Show', repository %></td>
+    <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
+    <td><%= link_to 'Destroy', repository, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Repository', new_repository_path %>

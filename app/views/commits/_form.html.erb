@@ -1,0 +1,42 @@
+<% @commit_entry = @commit %>
+<%= form_for(@commit) do |f| %>
+  <% if @commit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commit.errors.count, "error") %> prohibited this commit from being saved:</h2>
+      <ul>
+      <% @commit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="field">
+    <%= f.label :Sha %><br />
+    <%= text_field :commit_entry , :sha %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= select( "commit_entry", "author_id", Author.all.collect { |p| [p.name, p.id] }, { :include_blank => true } ) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :repository %><br />
+   <%=  select( "commit_entry", "repository_id", Repository.all.collect { |p| [p.name,p.id] }, { :include_blank => true } ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= text_field :commit_entry, :comment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :commented_at %><br />	
+    <%=date_select :commit_entry, :commented_at%>   
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+ <% end %>
